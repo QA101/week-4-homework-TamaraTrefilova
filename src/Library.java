@@ -20,7 +20,8 @@ public class Library {
 	public Library() {
 		catalog.add(new Book("Dune", 500, "Fiction", "Frank Herbert"));
 		
-		catalog.add(new Book("The Wretched of Muirwood (Legends of Muirwood Book 1)", 300, "Fantasy", "Jeff Wheeler"));
+		catalog.add(new
+				Book("The Wretched of Muirwood (Legends of Muirwood Book 1)", 300, "Fantasy", "Jeff Wheeler"));
 		
 		catalog.add(new Book("The Blight of Muirwood (Legends of Muirwood Book 2)", 466, "Fantasy", "Jeff Wheeler"));
 		
@@ -29,6 +30,13 @@ public class Library {
 		catalog.add(new Book("Children of Dune", 420, "Science Fiction",  ""));
 	}
 	
+	/**
+	 * Adds a book to catalog
+	 * @param book - Book
+	 */
+	public void addBook(Book book) {
+		this.catalog.add(book);
+	}
 	/*
 	 * Returns every book title from within the library's catalog.
 	 */
@@ -38,6 +46,15 @@ public class Library {
 			returnString += b + "\n";
 		}
 		return returnString;
+	}
+
+	public void setCatalog(ArrayList<Book> catalog2) {
+		this.catalog = catalog2;
+		
+	}
+
+	ArrayList<Book> getCatalog() {
+		return catalog;
 	}
 
 }

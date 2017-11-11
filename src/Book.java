@@ -4,6 +4,8 @@ public class Book{
 	int pages;
 	String genre;
 	String author;
+	boolean status;
+	
 	
 	/*
 	 * Constructor for the book
@@ -15,6 +17,15 @@ public class Book{
 		this.author = author;
 	}
 	
+
+	boolean isStatus() {
+		return status;
+	}
+
+	void setStatus(boolean status) {
+		this.status = status;
+	}
+
 	public String toString() {
 		return title;
 	}
