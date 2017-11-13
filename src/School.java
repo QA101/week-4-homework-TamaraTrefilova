@@ -37,9 +37,10 @@ public class School {
 	 * ----------------CHALLENGE:----------------
 	 * 
 	 * Can a school have a library? How would this be represented within the school?
+	 * @throws Exception 
 	 * 
 	 */
-	public static void main(String args[]) {
+	public static void main(String args[]) throws Exception {
 		//TODO create a school (similar to the library)
 		School school = new School("Harbour Pointe"); 
 	
@@ -51,20 +52,18 @@ public class School {
 		System.out.println("Status: " +school.getSchoolStatus());
 		school.closeSchool();
 		System.out.println("Status: " +school.getSchoolStatus());
-		try {
-			school.setNumStudents(400);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		school.setNumStudents(400);
 		System.out.println("Number of students is : "+school.getStudents());
-		try {
-			school.setNumTeachers(600);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		school.setNumTeachers(600);
+
 		System.out.println("Number of teachers is : "+school.getTeachers());
+		Student student1 = new Student("John","Smith", 12, 6);
+		school.library.bookCheckout(  student1, "Dune");
+		school.library.bookCheckout(  student1, "Moss");
+		Student student2 = new Student("John","Good", 12, 6);
+		school.library.bookCheckout(  student2, "Dune");
+		school.library.bookReturn(  student1, "Dune");
+		
 	}
 	
 	/**
@@ -132,11 +131,12 @@ public class School {
 		return numTeachers;
 	}
 	
-	void setNumStudents(int numStudents) throws Exception{
+	void setNumStudents(int numStudents){
 		if(MAX_STUDENTS<numStudents) {
-			throw new  IllegalArgumentException("Entered value more that max number "+MAX_STUDENTS); 
-		} 
-		this.numStudents = numStudents;
+			System.out.println("Entered value more that max number "+MAX_STUDENTS); 
+		} else {
+			this.numStudents = numStudents;
+		}
 	}
 
 	Library getLibrary() {
@@ -159,11 +159,12 @@ public class School {
 		this.name = name;
 	}
 
-	void setNumTeachers(int numTeachers) throws Exception{
+	void setNumTeachers(int numTeachers){
 		if(MAX_TEACHERS<numTeachers) {
-			throw new  IllegalArgumentException("Entered value more that max number "+MAX_TEACHERS); 
-		} 
-		this.numTeachers = numTeachers;
+			System.out.println("Entered value more that max number "+MAX_TEACHERS); 
+		} else {
+			this.numTeachers = numTeachers;
+		}
 	}
 
 	/**

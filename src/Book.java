@@ -1,6 +1,6 @@
 
 public class Book{
-	String title;
+	private String title;
 	int pages;
 	String genre;
 	String author;
@@ -11,13 +11,15 @@ public class Book{
 	 * Constructor for the book
 	 */
 	public Book(String title, int pages, String genre, String author) {
-		this.title = title;
+		this.setTitle(title);
 		this.pages = pages;
 		this.genre = genre;
 		this.author = author;
 	}
 	
-
+	public Book() {
+		
+	}
 	boolean isStatus() {
 		return status;
 	}
@@ -27,10 +29,20 @@ public class Book{
 	}
 
 	public String toString() {
-		return title;
+		return getTitle();
 	}
 	
 	public String Details() {
-		return "Title: " + title + ", #pages: " + pages + ", Author: " + author;
+		return "Title: " + getTitle() + ", #pages: " + pages + ", Author: " + author;
+	}
+
+
+	public String getTitle() {
+		return title;
+	}
+
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 }

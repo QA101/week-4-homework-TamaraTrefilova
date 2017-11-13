@@ -79,7 +79,7 @@ public String[] backwardChars(String str) {
     return chars;
 }
 
-public ArrayList<String> backwardCharsB(String str) 
+publicchar backwardCharsB(String str) 
 {    
 
 }

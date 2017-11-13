@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 
+
 /*
  * Simple class to represent a library.
  * Library contains an arraylist of books
  */
 public class Library {
 
-	ArrayList<Book> catalog = new ArrayList<Book>();
+	private ArrayList<Book> catalog = new ArrayList<Book>();
 	
 	public static void main(String[] args) {
 		Library lib = new Library();
@@ -56,5 +57,45 @@ public class Library {
 	ArrayList<Book> getCatalog() {
 		return catalog;
 	}
-
+	
+	public  Book getBookByTitle(String bookTitle) {
+		Book bookA = new Book();
+		for(Book bookB:catalog) {
+			if(bookB.getTitle().equals(bookTitle)){
+				bookA = bookB;
+				return bookA;
+			}
+		}
+		return null;
+		
+	}
+	
+	public  void bookCheckout( Student student, String bookTitle) {
+		 Book book = this.getBookByTitle( bookTitle);
+		if(book==null) {
+			System.out.println("This book is not in our library");		
+		} else if(book.status){
+			student.books.add(book);
+			book.status= false;
+			System.out.println("Book "+book.getTitle()+" is added to student's "+
+		student.firstName +" "+student.lastName+" catalog");
+		} else {
+			System.out.println("Book "+book.getTitle()+" is already checkout");
+		}
+	}
+	
+	
+	public void bookReturn(Student student, String bookTitle) {
+		 Book book = this.getBookByTitle( bookTitle);
+		 if(book==null) {
+				System.out.println("This book is not in our library");		
+			} else if (student.books.remove(book)){
+				book.status= true;
+				System.out.println("Book "+book.getTitle()+" is removed from to student's "+
+				student.firstName +" "+student.lastName+" catalog");
+			} else {
+				System.out.println("Book "+book.getTitle()+" is removed from to student's "+
+						student.firstName +" "+student.lastName+" catalog");
+			}
+	}
 }
